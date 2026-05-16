@@ -82,11 +82,11 @@
       "patterns": [
         {
           "name": "support.function.drone.lau",
-          "match": "\\b(drone)\\.(move|doFlip|getPosition|getPositionX|getPositionZ|plant|useItem|crop|harvest|canCrop|canHarvest|getPlant|getPlantPercent|getPlantWeight|getPlantHasFruit|getFruit|getFruitPercent)\\b"
+          "match": "\\b(drone)\\.(move|doFlip|getPosition|getPositionX|getPositionZ|plant|useItem|crop|harvest|canCrop|canHarvest|getPlant|getPlantPercent|getPlantWeight|getPlantHasFruit|getFruit|getFruitPercent|status)\\b"
         },
         {
           "name": "support.function.droneV2.lau",
-          "match": "\\b(droneV2)\\.(doBig|doSpin|doWobble|goto|isLocked|lock|unlock|swap)\\b"
+          "match": "\\b(droneV2)\\.(doBig|doSpin|doWobble|goto|isLocked|lock|unlock|swap|getGear|hasGear|getGearName|getGearDuration|getFertilizer|getManualWater|getMachineWater|getLighting)\\b"
         },
         {
           "name": "support.function.player.lau",
@@ -94,7 +94,7 @@
         },
         {
           "name": "support.function.playerV2.lau",
-          "match": "\\b(playerV2)\\.(boughtGear|boughtSeed|clicked|getGift)\\b"
+          "match": "\\b(playerV2)\\.(boughtGear|boughtSeed|clicked|getGift|mainScreenEnable|tpToDrone|distanceToDrone|getScrapLeaderboardRank)\\b"
         },
         {
           "name": "support.function.market.lau",
@@ -102,15 +102,19 @@
         },
         {
           "name": "support.function.http.lau",
-          "match": "\\b(player)\\.(get|post|jsonEncode|jsonDecode)\\b"
+          "match": "\\b(http)\\.(get|post|jsonEncode|jsonDecode)\\b"
         },
         {
           "name": "support.function.list.lau",
-          "match": "\\b(player)\\.(insert|remove|clear|check|find|sort)\\b"
+          "match": "\\b(list)\\.(insert|remove|clear|check|find|sort)\\b"
         },
         {
           "name": "support.function.data.lau",
-          "match": "\\b(player)\\.(save|load|clear)\\b"
+          "match": "\\b(data)\\.(save|load|clear)\\b"
+        },
+        {
+          "name": "support.function.cache.lau",
+          "match": "\\b(cache)\\.(set|get|remove|reset)\\b"
         },
         {
           "name": "support.function.game.lau",
@@ -130,7 +134,7 @@
         },
         {
           "name": "support.function.global.lau",
-          "match": "\\b(print|printn|req|type|pcall|error|tonumber|tostring|clear|inpairs)\\b"
+          "match": "\\b(print|printn|req|type|pcall|error|tonumber|tostring|clearn|inpairs)\\b"
         }
       ]
     },
