@@ -39,9 +39,9 @@
     "body": ["tostring(${1:value})"],
     "description": "Converts any given value (number, Boolean, etc.) into a string format."
   },
-  "clear": {
-    "prefix": "clear",
-    "body": ["print()"],
+  "clearn": {
+    "prefix": "clearn",
+    "body": ["clearn()"],
     "description": "Clears the output panel."
   },
   "inpairs": {
@@ -98,6 +98,48 @@
     "description": "Permanently deletes all data in the specified slot."
   },
 
+  "cache.set": {
+    "prefix": "cache.set",
+    "body": ["cache.set(${1:key}, ${2:value})"],
+    "description": "Stores a value under the specified string key. Returns true if successful."
+  },
+  "cache.get": {
+    "prefix": "cache.get",
+    "body": ["cache.get(${1:key})"],
+    "description": "Retrieves the value from memory. Returns 'null' if the key doesn't exist."
+  },
+  "cache.remove": {
+    "prefix": "cache.remove",
+    "body": ["cache.remove(${1:key})"],
+    "description": "Deletes a specific key from your cache."
+  },
+  "cache.reset": {
+    "prefix": "cache.reset",
+    "body": ["cache.reset()"],
+    "description": "Instantly clears all your cached cache."
+  },
+  "cache.exampleusage": {
+    "prefix": "cache.exampleusage",
+    "body": [
+
+"-- Let's check if the drone remembers its last task",
+"varol currentJob = cache.get(\"drone_task\")",
+"",
+"if currentJob == null then",
+"    -- First time running the code! Let's save a task.",
+"    cache.set(\"drone_task\", \"Harvest_Apples\")",
+"    print(\"Job saved to RAM. Stop the code and run it again!\")",
+"else",
+"    -- Even if you stopped and restarted the code, this will trigger!",
+"    print(\"Recovered task from memory: \" + currentJob)",
+"    ",
+"    -- Let's clear it now",
+"    cache.remove(\"drone_task\")",
+"    print(\"Memory cleared.\")",
+"end"
+],
+    "description": "Cache module example."
+  },
 
   "droneV2.doBig": {
     "prefix": "droneV2.doBig",
@@ -138,6 +180,47 @@
     "prefix": "droneV2.unlock",
     "body": ["droneV2.unlock()"],
     "description": "Unlock the plant beneath the drone, restoring its ability to be harvested, cropped or swapped."
+  },
+
+  "droneV2.getGear": {
+    "prefix": "droneV2.getGear",
+    "body": ["droneV2.getGear()"],
+    "description": "Returns a comprehensive object containing all machine ddetails and soil buff data on the tile."
+  },
+  "droneV2.hasGear": {
+    "prefix": "droneV2.hasGear",
+    "body": ["droneV2.hasGear()"],
+    "description": "Returns true/false indicating if a machine is currently placed on the tile."
+  },
+  "droneV2.getGearName": {
+    "prefix": "droneV2.getGearName",
+    "body": ["droneV2.getGearName()"],
+    "description": "Returns the specific name of the gear."
+  },
+  "droneV2.getGearDuration": {
+    "prefix": "droneV2.getGearDuration",
+    "body": ["droneV2.getGearDuration()"],
+    "description": "Returns the remaining active gear duration in seconds."
+  },
+  "droneV2.getFertilizer": {
+    "prefix": "droneV2.getFertilizer",
+    "body": ["droneV2.getFertilizer()"],
+    "description": "Returns an object with 'Duration' (remaining seconds) and 'Multi' (effectiveness multiplier) for the fertilizer tile buff."
+  },
+  "droneV2.getManualWater": {
+    "prefix": "droneV2.getManualWater",
+    "body": ["droneV2.getManualWater()"],
+    "description": "Returns an object with 'Duration' (remaining seconds) and 'Multi' (effectiveness multiplier) for the manual water tile buff."
+  },
+  "droneV2.getMachineWater": {
+    "prefix": "droneV2.getMachineWater",
+    "body": ["droneV2.getMachineWater()"],
+    "description": "Returns an object with 'Duration' (remaining seconds) and 'Multi' (effectiveness multiplier) for the machine water tile buff."
+  },
+  "droneV2.getLighting": {
+    "prefix": "droneV2.getLighting",
+    "body": ["droneV2.getLighting()"],
+    "description": "Returns the remaining duration of the lighting rod protection effect in seconds."
   },
 
 
@@ -220,6 +303,11 @@
     "prefix": "drone.getFruit",
     "body": ["drone.getFruit()"],
     "description": "Returns fruit data. If the plant does not produce fruit, it returns null."
+  },
+  "drone.status": {
+    "prefix": "drone.status",
+    "body": ["drone.status()"],
+    "description": "Returns the current status of the drone as an Enum (e.g., Enum.DroneStatus.Busy or Enum.DroneStatus.Sleep ). This command is essential when using non-blocking drone pragmas to prevent overlapping operations."
   },
   "drone - check fruit example": {
     "prefix": "drone.getFruitExample",
@@ -330,7 +418,26 @@
     "body": ["playerV2.getGift()"],
     "description": "Attempts to claim the daily login gift. Displays a notification and opens the gift menu if successful."
   },
-
+  "playerV2.mainScreenEnable": {
+    "prefix": "playerV2.mainScreenEnable",
+    "body": ["playerV2.mainScreenEnable(${1:Boolean})"],
+    "description": "Enables (true) or disables (false) the main screen UI."
+  },
+  "playerV2.tpToDrone": {
+    "prefix": "playerV2.tpToDrone",
+    "body": ["playerV2.tpToDrone()"],
+    "description": "Instantly teleports your character directly to the drone's current position."
+  },
+  "playerV2.distanceToDrone": {
+    "prefix": "playerV2.distanceToDrone",
+    "body": ["playerV2.distanceToDrone()"],
+    "description": "Returns the numerical distance between your character and the drone."
+  },
+  "playerV2.getScrapLeaderboardRank": {
+    "prefix": "playerV2.getScrapLeaderboardRank",
+    "body": ["playerV2.getScrapLeaderboardRank()"],
+    "description": "Returns your current rank on the Top 50 Scrap Leaderboard as a number. If you are not in the top 50, it returns null."
+  },
 
 
   "player.getFruitCount": {
@@ -724,7 +831,7 @@
 
   "Enum.Seed": {
     "prefix": "Enum.Seed",
-    "body": ["Enum.Seed.${1|Wheat,Bamboo,Coconut,Mushroom,Tomato,Bush,Pumpkin,Pear,Pepper,Cacao,Glttch,Apple,Lotus,Lemon,Onion,Tree,Pineapple,Blueberry,Carrot,Corn,Cactus,Strawberry,Watermelon,Grape,Potato,Banana|}"],
+    "body": ["Enum.Seed"],
     "description": "Seed enum: Pick a seed type."
   },
   "Enum.Seed.Wheat": { "prefix": "Enum.Seed.Wheat", "body": ["Enum.Seed.Wheat"], "description": "Seed enum: Wheat" },
@@ -753,6 +860,8 @@
   "Enum.Seed.Grape": { "prefix": "Enum.Seed.Grape", "body": ["Enum.Seed.Grape"], "description": "Seed enum: Grape" },
   "Enum.Seed.Potato": { "prefix": "Enum.Seed.Potato", "body": ["Enum.Seed.Potato"], "description": "Seed enum: Potato" },
   "Enum.Seed.Banana": { "prefix": "Enum.Seed.Banana", "body": ["Enum.Seed.Banana"], "description": "Seed enum: Banana" },
+  "Enum.Seed.Mango": { "prefix": "Enum.Seed.Mango", "body": ["Enum.Seed.Mango"], "description": "Seed enum: Mango" },
+  "Enum.Seed.Garlic": { "prefix": "Enum.Seed.Garlic", "body": ["Enum.Seed.Garlic"], "description": "Seed enum: Garlic" },
 
   "Enum.Direction.North": {
     "prefix": "Enum.Direction.North",
