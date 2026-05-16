@@ -959,6 +959,18 @@
     "body": ["Enum.CameraMode.Fixed"],
     "description": "CameraMode enum: Fixed"
   },
+  
+    "Enum.DroneStatus.Busy": {
+    "prefix": "Enum.DroneStatus.Busy",
+    "body": ["Enum.DroneStatus.Busy"],
+    "description": "DroneStatus enum: Busy"
+  },
+    "Enum.DroneStatus.Sleep": {
+    "prefix": "Enum.DroneStatus.Sleep",
+    "body": ["Enum.DroneStatus.Sleep"],
+    "description": "DroneStatus enum: Sleep"
+  },
+
 
 
 
